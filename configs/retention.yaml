@@ -1,0 +1,63 @@
+# Workstream D — Tool-aware KV retention configuration (Workstream A only).
+# Field names under `engine.retention` MUST match src/retention/config.py:
+#   RetentionConfig(enabled, ttl: TTLConfig, pin_manager: PinManagerConfig)
+#   TTLConfig(alpha, default_ttl, safety_factor, use_per_tool_ema, use_ema)
+#   PinManagerConfig(max_pinned_fraction)
+# evaluation/engine_adapter.build_real_engine parses this dict directly into
+# those dataclasses and forwards as `retention_config=` to vllm.LLM.
+
+name: retention
+
+model:
+  name: meta-llama/Meta-Llama-3-8B
+  dtype: float16
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+
+engine:
+  retention:
+    enabled: true
+    ttl:
+      # EMA smoothing factor for per-tool latency tracking.
+      alpha: 0.3
+      # Initial TTL guess (seconds) before any EMA samples exist.
+      default_ttl: 1.0
+      # Multiplier applied to predicted latency → TTL window (covers tool jitter).
+      safety_factor: 1.5
+      # Ablation: false → use a single global EMA across all tools.
+      use_per_tool_ema: true
+      # Ablation: false → fixed default_ttl * safety_factor for every tool.
+      use_ema: true
+    pin_manager:
+      # Cap on the fraction of total GPU blocks that can sit pinned at once.
+      # Above this, new pin requests are rejected (event_type=pin_rejected_budget).
+      max_pinned_fraction: 0.30
+
+  # Required by Workstream A: retention hard-fails at engine init if this is off.
+  prefix_caching:
+    enabled: true
+
+  quantization:
+    kv_cache: null            # null | int8 | int4   (Workstream B knob)
+  torch_compile:
+    enabled: false            # Workstream C knob
+  lmcache:
+    enabled: false
+
+traces:
+  - id: 5turn-mixed
+    turns: 5
+    tool_latency_dist: mixed
+    prompt_tokens: 1024
+  - id: 10turn-mixed
+    turns: 10
+    tool_latency_dist: mixed
+    prompt_tokens: 1024
+  - id: 25turn-mixed
+    turns: 25
+    tool_latency_dist: mixed
+    prompt_tokens: 1024
+  - id: 50turn-mixed
+    turns: 50
+    tool_latency_dist: mixed
+    prompt_tokens: 1024

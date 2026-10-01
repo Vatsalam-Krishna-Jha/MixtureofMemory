@@ -1,0 +1,47 @@
+# =============================================================================
+# MoM Project Dependencies
+# =============================================================================
+# Verified install order (GPU VM with CUDA 12.x):
+#
+#   1. pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+#   2. pip install vllm==0.6.4.post1
+#   3. pip install -r vllm/requirements-common.txt
+#   4. pip install transformers==4.46.3
+#   5. pip install -r requirements.txt
+#   6. Overlay modified vLLM Python files (see README.md for the 7-file list)
+#
+# torch and transformers are pinned here for reference; install torch via the
+# PyTorch index URL in step 1 to get the correct CUDA variant.
+# =============================================================================
+
+# Core ML stack (pinned to verified-working versions)
+torch==2.5.1
+transformers==4.46.3
+vllm==0.6.4.post1
+
+# Agent frameworks
+langchain>=0.1.0
+
+# Experiment tracking
+wandb>=0.16.0
+
+# Profiling
+tensorboard>=2.15.0
+
+# Benchmarks
+datasets>=2.16.0
+
+# Quantization utilities
+bitsandbytes>=0.42.0
+
+# MoM extension (Workstream E)
+faiss-cpu>=1.7.4
+scikit-learn>=1.4.0
+rank-bm25>=0.2.2
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.66.0
+numpy>=1.26.0
+pandas>=2.1.0
+matplotlib>=3.8.0
