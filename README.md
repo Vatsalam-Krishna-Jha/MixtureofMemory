@@ -6,20 +6,10 @@
 
 ---
 
-## Team Information
-
-- **Team Name:** MoM / Mixture of Memory
-- **Members:**
-  - Dakshinamoorthy A (da3232) — *Workstream A: Tool-aware KV retention (PinManager, TTLPredictor, vLLM scheduler hooks)*
-  - Alexander Ryssdal-Banoun (ar4678) — *Workstream D: End-to-end evaluation framework & concurrent runner; Workstream E: MoM routing extension (stretch)*
-  - Andrew Lee (al4744) — *Workstream C: torch.compile integration & phase-tagged profiling infrastructure*
-  - Vatsalam Krishna Jha (vkj2107) — *Workstream B: INT8/INT4 KV cache quantization*
-
 ---
 
 ## Submission
 
-- **GitHub repository:** [https://github.com/al4744/MoM](https://github.com/al4744/MoM)
 - **Final report:** [`deliverables/MoM_HPML_Final_Report.pdf`](deliverables/MoM_HPML_Final_Report.pdf)
 - **Final presentation:** [`deliverables/MoM_HPML_Final_Presentation.pptx`](deliverables/MoM_HPML_Final_Presentation.pptx)
 
