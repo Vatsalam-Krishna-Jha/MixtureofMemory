@@ -319,26 +319,4 @@ By submitting this project, the team confirms that the analysis, interpretations
 
 Released under the MIT License. See [`LICENSE`](LICENSE).
 
-### Citation
-
-```bibtex
-@misc{mom2026hpml,
-  title  = {Mixture of Memory: Tool-Aware KV Cache Retention for Agentic LLM Serving},
-  author = {A., Dakshinamoorthy and Ryssdal-Banoun, Alexander and Lee, Andrew and Krishna Jha, Vatsalam},
-  year   = {2026},
-  note   = {HPML Spring 2026 Final Project, Columbia University},
-  url    = {https://github.com/al4744/MoM}
-}
-```
-
-### Contact
-
-Open a GitHub Issue or email the team:
-- da3232@columbia.edu
-- ar4678@columbia.edu
-- al4744@columbia.edu
-- vkj2107@columbia.edu
-
----
-
-*HPML Spring 2026 — Dr. Kaoutar El Maghraoui — Columbia University*
+ar El Maghraoui — Columbia University*
