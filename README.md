@@ -127,8 +127,8 @@ MoM/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/al4744/MoM.git
-cd MoM
+git clone https://github.com/Vatsalam-Krishna-Jha/MixtureofMemory.git
+cd MixtureofMemory
 
 # 2. Create a clean Python environment (Python 3.11 or 3.12 recommended)
 python -m venv .venv && source .venv/bin/activate   # Linux/macOS
